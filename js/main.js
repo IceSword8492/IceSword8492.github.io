@@ -35,6 +35,7 @@ let connectionTimeChart = new Chart(ctx, {
 });
 let bestneet = null;
 let stableneet = null;
+let averageneet = null;
 let memberlist = [];
 let bestneetarray = [];
 let avgneetarray = [];
@@ -87,8 +88,20 @@ for (let i in sdneetarray)
     stableneet = [memberlist[i], sdneetarray[i]];
   }
 }
+for (let i in avgneetarray)
+{
+  if (!averageneet)
+  {
+    averageneet = [memberlist[0], avgneetarray[0]];
+  }
+  if (averageneet[1] < avgneetarray[i])
+  {
+    averageneet = [memberlist[i], avgneetarray[i]];
+  }
+}
 document.getElementById("bestneet").innerHTML = bestneet[0];
 document.getElementById("stableneet").innerHTML = stableneet[0];
+document.getElementById("averageneet").innerHTML = averageneet[0];
 
 
 
