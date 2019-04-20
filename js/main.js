@@ -18,7 +18,9 @@ let url = {
     }
     return params;
   },
-  params: this.getParams()
+  params: {}
 };
+
+url.params = url.getParams();
 
 console.log(url.params);
