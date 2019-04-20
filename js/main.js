@@ -36,10 +36,12 @@ let connectionTimeChart = new Chart(ctx, {
 let bestneet = null;
 let stableneet = null;
 let averageneet = null;
+let maximumneet = null;
 let memberlist = [];
 let bestneetarray = [];
 let avgneetarray = [];
 let sdneetarray = [];
+let maximumneetarray = [];
 for (let i in data)
 {
   memberlist[i] = data[i].nickname;
@@ -48,8 +50,10 @@ for (let i in data)
     if (!bestneetarray[i])
     {
       bestneetarray[i] = 0;
+      maximumneetarray[i] = 0;
     }
     bestneetarray[i] += data[i].connectionTime[j];
+    maximumneetarray[i] = maximumneetarray[i] < data[i].connectionTime[j] ? data[i].connectionTime[j] : maximumneetarray[i];
   }
 }
 for (let i in bestneetarray)
@@ -99,9 +103,21 @@ for (let i in avgneetarray)
     averageneet = [memberlist[i], avgneetarray[i]];
   }
 }
+for (let i in maximumneetarray)
+{
+  if (!maximumneet)
+  {
+    maximumneet = [memberlist[0], maximumneetarray[0]];
+  }
+  if (maximumneet[1] < maximumneetarray[i])
+  {
+    maximumneet = [memberlist[i], maximumneetarray[i]];
+  }
+}
 document.getElementById("bestneet").innerHTML = bestneet[0];
 document.getElementById("stableneet").innerHTML = stableneet[0];
 document.getElementById("averageneet").innerHTML = averageneet[0];
+document.getElementById("maximumneet").innerHTML = maximumneet[0];
 
 
 
