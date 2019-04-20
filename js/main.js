@@ -87,7 +87,7 @@ for (let i in sdneetarray)
   {
     stableneet = [memberlist[0], sdneetarray[0]];
   }
-  if (stableneet[1] < sdneetarray[i])
+  if (stableneet[1] > sdneetarray[i])
   {
     stableneet = [memberlist[i], sdneetarray[i]];
   }
@@ -114,10 +114,10 @@ for (let i in maximumneetarray)
     maximumneet = [memberlist[i], maximumneetarray[i]];
   }
 }
-document.getElementById("bestneet").innerHTML = bestneet[0];
-document.getElementById("stableneet").innerHTML = stableneet[0];
-document.getElementById("averageneet").innerHTML = averageneet[0];
-document.getElementById("maximumneet").innerHTML = maximumneet[0];
+document.getElementById("bestneet").innerHTML = bestneet[0];       // 接続時間の合計が最も長かったメンバー
+document.getElementById("stableneet").innerHTML = stableneet[0];   // 接続時間の標準偏差が最も小さかったメンバー
+document.getElementById("averageneet").innerHTML = averageneet[0]; // 平均接続時間が最も長かったメンバー
+document.getElementById("maximumneet").innerHTML = maximumneet[0]; // 一日の接続時間が最も長かったメンバー
 
 
 
