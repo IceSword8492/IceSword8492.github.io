@@ -18,7 +18,7 @@ let url = {
     }
     return params;
   },
-  params: utl.getParams()
+  params: url.getParams()
 };
 
 console.log(url.params);
