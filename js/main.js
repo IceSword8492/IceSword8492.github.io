@@ -9,7 +9,7 @@ labels.reverse();
 let datasets = [];
 for (let member of data)
 {
-  datasets.push({label: member.nickname, backgroundColor: member.backgroundColor, borderColor: member.borderColor, data: []});
+  datasets.push({label: member.nickname, /*backgroundColor: member.backgroundColor*/, borderColor: member.borderColor, data: []});
   for (let date of labels)
   {
     if (member.connectionTime[date] != undefined)
