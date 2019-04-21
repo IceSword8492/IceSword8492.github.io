@@ -42,6 +42,9 @@ let bestneetarray = [];
 let avgneetarray = [];
 let sdneetarray = [];
 let maximumneetarray = [];
+let todayneetarray = [];
+let todayneet = null;
+
 for (let i in data)
 {
   memberlist[i] = data[i].nickname;
@@ -56,6 +59,9 @@ for (let i in data)
     maximumneetarray[i] = maximumneetarray[i] < data[i].connectionTime[j] ? data[i].connectionTime[j] : maximumneetarray[i];
   }
 }
+
+todayneet = [memberlist[0], 0];
+
 for (let i in bestneetarray)
 {
   if (!bestneet)
@@ -114,11 +120,19 @@ for (let i in maximumneetarray)
     maximumneet = [memberlist[i], maximumneetarray[i]];
   }
 }
+for (let i in memberlist)
+{
+  todayneetarray[i] = data[i].connectionTime[datetostr(new Date(), "YYYYMMDD")];
+  if (todayneet[1] < todayneetarray[i])
+  {
+    todayneet = [memberlist[i], todayneetarray[i]];
+  }
+}
 document.getElementById("bestneet").innerHTML = bestneet[0];       // 接続時間の合計が最も長かったメンバー
 document.getElementById("stableneet").innerHTML = stableneet[0];   // 接続時間の標準偏差が最も小さかったメンバー
 document.getElementById("averageneet").innerHTML = averageneet[0]; // 平均接続時間が最も長かったメンバー
 document.getElementById("maximumneet").innerHTML = maximumneet[0]; // 一日の接続時間が最も長かったメンバー
-
+document.getElementById("neetoftheday").innerHTML = todayneet[0];
 
 
 function datetostr(date, format, is12hours) {
