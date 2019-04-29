@@ -133,8 +133,7 @@ for (let i of todayneetarray)
 {
   todayneetflag += i;
 }
-console.log(todayneetarray);
-console.log(todayneetflag);
+todayneetflag = todayneetflag ? true : false;
 document.getElementById("bestneet").innerHTML = bestneet[0];       // 接続時間の合計が最も長かったメンバー
 document.getElementById("stableneet").innerHTML = stableneet[0];   // 接続時間の標準偏差が最も小さかったメンバー
 document.getElementById("averageneet").innerHTML = averageneet[0]; // 平均接続時間が最も長かったメンバー
