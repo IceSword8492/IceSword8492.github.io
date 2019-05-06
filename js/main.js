@@ -45,21 +45,31 @@ let maximumneetarray = [];
 let todayneetarray = [];
 let todayneet = null;
 let todayneetflag = 0;
+let loopcounter;
 
 for (let i in data)
 {
+  loopcounter = 0;
   memberlist[i] = data[i].nickname;
-  for (let j in data[i].connectionTime)
+  for (let j = 0; j < 31; j++)
   {
+    loopcounter++;
     if (!bestneetarray[i])
     {
       bestneetarray[i] = 0;
       maximumneetarray[i] = 0;
     }
-    bestneetarray[i] += data[i].connectionTime[j];
-    maximumneetarray[i] = maximumneetarray[i] < data[i].connectionTime[j] ? data[i].connectionTime[j] : maximumneetarray[i];
+    bestneetarray[i] += data[i].connectionTime[parseInt(datetostr(new Date(new Date - 86400000 * j), "YYYYMMDD"))] ? data[i].connectionTime[parseInt(datetostr(new Date(new Date - 86400000 * j), "YYYYMMDD"))] : 0;
+    maximumneetarray[i] = maximumneetarray[i] < data[i].connectionTime[parseInt(datetostr(new Date(new Date - 86400000 * j), "YYYYMMDD"))] ? data[i].connectionTime[parseInt(datetostr(new Date(new Date - 86400000 * j), "YYYYMMDD"))] : maximumneetarray[i];
+    if (loopcounter >= 30)
+    {
+      break;
+    }
   }
 }
+
+data.reverse();
+console.log(data);
 
 todayneet = [memberlist[0], 0];
 
@@ -133,8 +143,7 @@ for (let i of todayneetarray)
 {
   todayneetflag += i;
 }
-console.log(todayneetarray);
-console.log(todayneetflag);
+
 document.getElementById("bestneet").innerHTML = bestneet[0];       // 接続時間の合計が最も長かったメンバー
 document.getElementById("stableneet").innerHTML = stableneet[0];   // 接続時間の標準偏差が最も小さかったメンバー
 document.getElementById("averageneet").innerHTML = averageneet[0]; // 平均接続時間が最も長かったメンバー
