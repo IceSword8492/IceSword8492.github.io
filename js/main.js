@@ -68,9 +68,6 @@ for (let i in data)
   }
 }
 
-data.reverse();
-console.log(data);
-
 todayneet = [memberlist[0], 0];
 
 for (let i in bestneetarray)
