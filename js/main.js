@@ -1,4 +1,3 @@
-console.log(data.map(entry => ({id: entry.id, nickname: entry.nickname, backgroundColor: entry.backgroundColor, borderColor: entry.borderColor})));
 let range = 30;
 let ctx = document.getElementById('connectionTime').getContext('2d');
 let labels = [];
