@@ -4,6 +4,13 @@ let labels = [];
 for (let i = 0; i < parseInt(range); i++)
 {
   labels.push(datetostr(new Date(new Date - 86400000 * i), "YYYYMMDD"));
+  for (let index in data)
+  {
+    if (data[index].connectionTime[datetostr(new Date(new Date - 86400000 * i), "YYYYMMDD")] === undefined)
+    {
+      data[index].connectionTime[datetostr(new Date(new Date - 86400000 * i), "YYYYMMDD")] = 0;
+    }
+  }
 }
 labels.reverse();
 let datasets = [];
